@@ -1,0 +1,219 @@
+Setting environment for using XAMPP for Windows.
+2022asp58@CL2-23 c:\xampp
+# mysql-u root-p
+'mysql-u' is not recognized as an internal or external command,
+operable program or batch file.
+
+2022asp58@CL2-23 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use UOV
+Database changed
+MariaDB [UOV]> create table Hospital(PatientID int Primary key,Name char(25),Address char(25),Phone int);
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [UOV]> Describe Hospitals;
+ERROR 1146 (42S02): Table 'uov.hospitals' doesn't exist
+MariaDB [UOV]> Describe Hospital;
++-----------+----------+------+-----+---------+-------+
+| Field     | Type     | Null | Key | Default | Extra |
++-----------+----------+------+-----+---------+-------+
+| PatientID | int(11)  | NO   | PRI | NULL    |       |
+| Name      | char(25) | YES  |     | NULL    |       |
+| Address   | char(25) | YES  |     | NULL    |       |
+| Phone     | int(11)  | YES  |     | NULL    |       |
++-----------+----------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [UOV]> SHOW tables
+    -> ;
++---------------+
+| Tables_in_uov |
++---------------+
+| hospital      |
+| physician     |
+| students      |
++---------------+
+3 rows in set (0.003 sec)
+
+MariaDB [UOV]> INSERT INTO Hospital (PatientID,Name,Address,Phone) VALUES
+    -> (100000001,'John Smith','42 Foobar Lane','555 0256'),
+    -> (100000002,'Grace Ritchie','37 Snafu Drive','555 0512'),
+    -> (100000003,'Todd Quinlan','101 mgbbq Street','555 1204'),
+    -> (100000004,'Dennis Doe','1100 Foobaz Avenue','555 2048');
+Query OK, 4 rows affected, 4 warnings (0.034 sec)
+MariaDB [UOV]> Select * from Hospital;
++-----------+---------------+--------------------+-------+
+| PatientID | Name          | Address            | Phone |
++-----------+---------------+--------------------+-------+
+| 100000001 | John Smith    | 42 Foobar Lane     |   555 |
+| 100000002 | Grace Ritchie | 37 Snafu Drive     |   555 |
+| 100000003 | Todd Quinlan  | 101 mgbbq Street   |   555 |
+| 100000004 | Dennis Doe    | 1100 Foobaz Avenue |   555 |
++-----------+---------------+--------------------+-------+
+4 rows in set (0.001 sec)
+MariaDB [UOV]> Create database icae2
+    -> ;
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [UOV]> SHOW database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [UOV]> Show Databases;
++--------------------+
+| Database           |
++--------------------+
+| bank               |
+| book_manegment     |
+| bookboat           |
+| bookdb             |
+| bookdb1            |
+| company            |
+| day16              |
+| ems                |
+| englishfi          |
+| hospital           |
+| hospitaldb         |
+| icae2              |
+| ict4191icae04      |
+| information_schema |
+| inventory          |
+| it1223db           |
+| learning_platform  |
+| library            |
+| librarydb          |
+| librarysystem      |
+| movie              |
+| mysql              |
+| parking            |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| spjbase            |
+| studentdb          |
+| test               |
+| uov                |
+| web                |
+| webdevelopment     |
++--------------------+
+32 rows in set (0.054 sec)
+MariaDB [UOV]> DROP database icae2;
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [uov]> Show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank               |
+| book_manegment     |
+| bookboat           |
+| bookdb             |
+| bookdb1            |
+| company            |
+| day16              |
+| ems                |
+| englishfi          |
+| hospital           |
+| hospitaldb         |
+| ict4191icae04      |
+| information_schema |
+| inventory          |
+| it1223db           |
+| learning_platform  |
+| library            |
+| librarydb          |
+| librarysystem      |
+| movie              |
+| mysql              |
+| parking            |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| spjbase            |
+| studentdb          |
+| test               |
+| uov                |
+| web                |
+| webdevelopment     |
++--------------------+
+31 rows in set (0.001 sec)
+
+MariaDB [uov]> create database ICAE3;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [uov]> Show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank               |
+| book_manegment     |
+| bookboat           |
+| bookdb             |
+| bookdb1            |
+| company            |
+| day16              |
+| ems                |
+| englishfi          |
+| hospital           |
+| hospitaldb         |
+| icae3              |
+| ict4191icae04      |
+| information_schema |
+| inventory          |
+| it1223db           |
+| learning_platform  |
+| library            |
+| librarydb          |
+| librarysystem      |
+| movie              |
+| mysql              |
+| parking            |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| spjbase            |
+| studentdb          |
+| test               |
+| uov                |
+| web                |
+| webdevelopment     |
++--------------------+
+32 rows in set (0.001 sec)
+
+MariaDB [uov]> TRUNCATE table Hospital;
+Query OK, 0 rows affected (0.017 sec)
+MariaDB [uov]> Select * from Hospital;
+Empty set (0.000 sec)
+MariaDB [uov]> create table details(ID int Primary key,Name varchar(20),Age int,Grade char(1),City varchar(25));
+Query OK, 0 rows affected (0.010 sec)
+MariaDB [uov]> LOAD DATA LOCAL INFILE 'C:/Users/2022asp58/Desktop/rough/new 1.csv'
+    ->   INTO TABLE details
+    ->   FIELDS TERMINATED BY ','
+    ->   LINES TERMINATED BY '\n'
+    ->   (ID,Name,Age,Grade,City);
+Query OK, 0 rows affected, 12 warnings (0.001 sec)
+Records: 7  Deleted: 0  Skipped: 7  Warnings: 12
+
+MariaDB [uov]> select * from details;
++----+---------+------+-------+--------------+
+| ID | Name    | Age  | Grade | City         |
++----+---------+------+-------+--------------+
+|  0 | NULL    | NULL | NULL  | NULL         |
+    || Alice   |   20 | A     | New York
+     | Bob     |   22 | B     | Chicago
+    || Charlie |   21 | A     | New York
+      |David   |   23 | C     | Boston
+    || Emma    |   22 | B     | Chicago
+ | 6 | Frank   |   20 | A     | Los Angeles
++----+---------+------+-------+--------------+
+7 rows in set (0.000 sec)
+
+MariaDB [uov]>
+
